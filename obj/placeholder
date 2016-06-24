@@ -1,0 +1,2 @@
+.o files will be put here after running make. Remember to delete contents of this folder if copying whole 
+folder containing sources to a different machine and rebuilding.
