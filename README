@@ -1,6 +1,6 @@
 This program is a command line interface for Escea brand Flame Effect Gas Fireplace. It has been tested on Unbuntu 16.04 on x86_64 and Raspbarian on a Raspberry Pi I Model B.
 
-To install, compile the program with 'make' then simply evoke with ./escea. Obviously build-essential or similar package to support building programs from sources will need to be installed first.  
+To install, compile the program with 'make' then simply run from current directory with ./escea. Obviously build-essential or similar package to support building programs from sources will need to be installed first.  
 
 The file escea.conf must contain the ip address of the fireplace on first line. This can most easily be found by looking at the DHCP clients list of your router. Recommend setting up a fixed mapping or reserved address to ensure fireplace will always be leased the same address. 
 
