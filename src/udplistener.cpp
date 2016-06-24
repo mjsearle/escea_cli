@@ -165,9 +165,7 @@ bool UDPListener::listen ( char *response, char *dsize, char *data)
 		struct sockaddr_storage src_addr;
 		socklen_t src_addr_len=sizeof(src_addr);
 
-//		std::cout << "Gets to here" << std::endl; 
 	        int bytesRecv = recvfrom (udpSocket, raw_response, 15, 0, (struct sockaddr*)&src_addr, &src_addr_len );
-//		std::cout << "Gets to here after" << std::endl; 
 
 	        if (bytesRecv >= 0)
 		{
