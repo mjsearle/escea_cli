@@ -10,6 +10,7 @@ bool Fan_Boost ( void );
 bool No_Fan_Boost ( void );
 bool FlameEOn ( void );
 bool FlameEOff ( void );
+bool GetSerial ( void );
 
 
 #endif

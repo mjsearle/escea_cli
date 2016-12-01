@@ -22,6 +22,7 @@ void printAbout (const std::string& programName)
 	cout << "FANB_OFF  Stop boost Fan Speed" << endl;
 	cout << "FLAME_ONLY Enable Flame Effect Only Mode" << endl;
 	cout << "HEAT Enable full Heating Mode" << endl;
+	cout << "SERIAL Get Fire Serial Number and Pin" << endl;
 	cout <<endl;
 }
 
@@ -74,6 +75,11 @@ bool processCommand (const string& programName, const string& cmdStr, const stri
 	{
 		return FlameEOff ();
 	}
+
+	if (cmdStr == "SERIAL")
+        {
+                return GetSerial ();
+        }
 
 
 

@@ -50,6 +50,48 @@ bool Status ( void )
 		return sendstatus & receivestatus; 	
 }
 
+bool GetSerial ( void )
+{
+        auto char n=0;
+        auto char response[2]={ 0x0 };
+        auto char dsize[2]={ 0x0 };
+
+        auto bool sendstatus=0;
+        auto bool receivestatus=0;
+	auto unsigned long serial=0;
+	auto unsigned int pin=0;
+
+
+        auto char data[12]={ 0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0 };
+
+        while ( ! receivestatus && n < 10 )
+        {
+        sendstatus=UDPSender::sendCommand (0x50, 0x0, data );
+        receivestatus=UDPListener::listenCommand (response, dsize, data );
+        n++;
+        }
+
+        if ( n > 1 && n < 10) { std::cout << "Note: Took " << std::dec << (unsigned int)(n-1) << " retries to receive status." << std::endl; }
+        if ( n == 10) { std::cout << "Failed to receieve status after 9 retries, giving up....  ." << std::endl; }
+
+        std::cout << "Fireplace Responded: " << std::endl;
+
+        if ( response[0] == -144 || response[0] == 144  )
+        {
+		serial = data[3] | (data[2] << 8 ) | (data[1] << 16 ) | (data[0] << 24 );
+		pin = data[5] | (data[4] << 8 );
+  
+                std::cout << "Serial number was: " << std::dec << (unsigned long)(serial) << std::endl;
+                std::cout << "Pin was: " << std::dec << (unsigned int)(pin) << std::endl;
+        }
+        else { std::cout << "FirePlace did not respond to search request" << std::endl; }
+                return sendstatus & receivestatus;
+}
+
+
+
+
+
 
 bool NewSetTemp ( char newtemp)
 {
